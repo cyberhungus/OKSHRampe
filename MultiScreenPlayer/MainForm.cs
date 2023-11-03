@@ -60,7 +60,7 @@ namespace MultiScreenPlayer
             MediaPlayerA.Show();
             MediaPlayerB.Show();
 
-            performScreenReset();
+            performReset();
 
             autoConnectSerial();
 
@@ -112,7 +112,7 @@ namespace MultiScreenPlayer
         {
             while (true)
             {
-                //  Console.WriteLine("Arduino RUnner");
+              
                 if (ArduinoActive == true)
                 {
                     SerialConnect.sendMessage("<SYS-" + servoPosActive + "-" + relayActive + ">");
@@ -132,8 +132,7 @@ namespace MultiScreenPlayer
             try
             {
                 rec = e.Message.Substring(0, 6);
-               // Console.WriteLine(DateTime.Now + "Received: *" + rec + "*");
-                //ReceivedLabel.Text = e.Message;
+
                 //<0000> = ALLE AUS <1000>
                 //<0100> = 2. Sensor an
 
@@ -166,7 +165,7 @@ namespace MultiScreenPlayer
                 if (compareStrings(rec, "<0001>"))
                 {
 
-                    performScreenReset();
+                    performReset();
 
                 }
             }
@@ -177,6 +176,9 @@ namespace MultiScreenPlayer
             
         }
 
+        //Starts audio playback
+        //blocks playback until reset or timer (also started in this function)
+        
         private void startAudioPlayback()
         {
             Console.WriteLine((int)AudioPlayer.playState);
@@ -191,6 +193,7 @@ namespace MultiScreenPlayer
             }
         }
 
+        //stops audio playback and changes arduino communication to inactive state 
         private void ServoAudioRunner()
         {
             Thread.Sleep(AudioAndServoStopTimeSeconds * 1000);
@@ -198,14 +201,15 @@ namespace MultiScreenPlayer
             ArduinoActive = false;
         }
 
+        //stops the audio playback 
         private void stopAudioPlayback()
         {
             AudioPlayer.Ctlcontrols.stop();
             audioPlaying = false;
         }
 
-
-        private void performScreenReset()
+        //resets the system, 
+        private void performReset()
         {
             Console.WriteLine("Screen Reset Triggered");
             turnOffLightandServo();
@@ -243,6 +247,7 @@ namespace MultiScreenPlayer
 
         }
 
+        //performs a reconnect with the arduino 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             SerialConnect.shutdownPort();
@@ -251,24 +256,30 @@ namespace MultiScreenPlayer
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            performScreenReset();
+            performReset();
         }
+
+        //helper to compare strings 
         bool compareStrings(String A, String B)
         {
             bool toReturn = false;
-            //Console.WriteLine($"{A} {B}");
-            //Console.WriteLine(A.Length +"- " + B.Length);
             if (A.Length == B.Length) {
                 for (int i = 0; i < A.Length; i++)
                 {
-                    if (A[i] == B[i]) {
-                        toReturn = true; }
-                    else { return false;
-                         }
+                    if (A[i] == B[i])
+                    {
+                        toReturn = true; 
+                    }
+                    else 
+                    { 
+                        return false;
+                    }
                 }
                 return toReturn;
             }
-            else {  return false; }
+            else {  
+                return false;
+            }
         }
 
         private void uiUpdateTimer_Tick(object sender, EventArgs e)
@@ -280,7 +291,38 @@ namespace MultiScreenPlayer
                 LightServoLabel.Text = "Light and Servo OFF";
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (SerialConnect.isOpen()) {
+                SerialConnect.sendMessage("<SYS-101>");
+            }        }
+
+        private void SerialTestButton2_Click(object sender, EventArgs e)
+        {
+            if (SerialConnect.isOpen())
+            {
+                SerialConnect.sendMessage("<SYS-102>");
+            }
+        }
+
+        private void SerialTestButton3_Click(object sender, EventArgs e)
+        {
+            if (SerialConnect.isOpen())
+            {
+                SerialConnect.sendMessage("<SYS-103>");
+            }
+        }
+
+        private void SerialTestButton4_Click(object sender, EventArgs e)
+        {
+            if (SerialConnect.isOpen())
+            {
+                SerialConnect.sendMessage("<SYS-104>");
+            }
+        }
+    }
     }
 
    
-}
+

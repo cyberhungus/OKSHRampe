@@ -66,6 +66,10 @@ namespace MultiScreenPlayer
             }
         }
 
+        //starts media playback thats previously defined by setting the url
+        //also starts a thread with a timer that stops the player
+        //tries to make the player fullscreen
+
         public void playMedia()
         {
             
@@ -85,6 +89,7 @@ namespace MultiScreenPlayer
             Console.WriteLine("playing" + path );
         }
 
+        //Stops media playback - player is made invisible 
         public void stopMedia()
         {
 
@@ -95,7 +100,7 @@ namespace MultiScreenPlayer
         }
 
 
-
+        //returns wether media is playing as a boolean 
         public bool getPlayState()
         {
             int state = (int)MediaPlayer.playState;

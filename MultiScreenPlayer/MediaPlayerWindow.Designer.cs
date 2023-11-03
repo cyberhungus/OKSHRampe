@@ -30,10 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaPlayerWindow));
-            this.MediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.uiUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.MediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer)).BeginInit();
             this.SuspendLayout();
+            // 
+            // uiUpdateTimer
+            // 
+            this.uiUpdateTimer.Enabled = true;
+            this.uiUpdateTimer.Tick += new System.EventHandler(this.uiUpdateTimer_Tick);
             // 
             // MediaPlayer
             // 
@@ -44,11 +49,6 @@
             this.MediaPlayer.Size = new System.Drawing.Size(216, 132);
             this.MediaPlayer.TabIndex = 0;
             this.MediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.MediaPlayer_PlayStateChange);
-            // 
-            // uiUpdateTimer
-            // 
-            this.uiUpdateTimer.Enabled = true;
-            this.uiUpdateTimer.Tick += new System.EventHandler(this.uiUpdateTimer_Tick);
             // 
             // MediaPlayerWindow
             // 

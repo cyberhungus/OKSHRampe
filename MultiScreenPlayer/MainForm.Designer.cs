@@ -41,6 +41,10 @@
             this.AudioPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.ResetButton = new System.Windows.Forms.Button();
             this.uiUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.SerialTestButton1 = new System.Windows.Forms.Button();
+            this.SerialTestButton2 = new System.Windows.Forms.Button();
+            this.SerialTestButton3 = new System.Windows.Forms.Button();
+            this.SerialTestButton4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AudioPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,11 +150,59 @@
             this.uiUpdateTimer.Interval = 1000;
             this.uiUpdateTimer.Tick += new System.EventHandler(this.uiUpdateTimer_Tick);
             // 
+            // SerialTestButton1
+            // 
+            this.SerialTestButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialTestButton1.Location = new System.Drawing.Point(280, 145);
+            this.SerialTestButton1.Name = "SerialTestButton1";
+            this.SerialTestButton1.Size = new System.Drawing.Size(83, 68);
+            this.SerialTestButton1.TabIndex = 12;
+            this.SerialTestButton1.Text = "Serial Test A";
+            this.SerialTestButton1.UseVisualStyleBackColor = true;
+            this.SerialTestButton1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // SerialTestButton2
+            // 
+            this.SerialTestButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialTestButton2.Location = new System.Drawing.Point(369, 150);
+            this.SerialTestButton2.Name = "SerialTestButton2";
+            this.SerialTestButton2.Size = new System.Drawing.Size(83, 68);
+            this.SerialTestButton2.TabIndex = 13;
+            this.SerialTestButton2.Text = "Serial Test B";
+            this.SerialTestButton2.UseVisualStyleBackColor = true;
+            this.SerialTestButton2.Click += new System.EventHandler(this.SerialTestButton2_Click);
+            // 
+            // SerialTestButton3
+            // 
+            this.SerialTestButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialTestButton3.Location = new System.Drawing.Point(458, 150);
+            this.SerialTestButton3.Name = "SerialTestButton3";
+            this.SerialTestButton3.Size = new System.Drawing.Size(83, 68);
+            this.SerialTestButton3.TabIndex = 14;
+            this.SerialTestButton3.Text = "Serial Test C";
+            this.SerialTestButton3.UseVisualStyleBackColor = true;
+            this.SerialTestButton3.Click += new System.EventHandler(this.SerialTestButton3_Click);
+            // 
+            // SerialTestButton4
+            // 
+            this.SerialTestButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialTestButton4.Location = new System.Drawing.Point(547, 150);
+            this.SerialTestButton4.Name = "SerialTestButton4";
+            this.SerialTestButton4.Size = new System.Drawing.Size(83, 68);
+            this.SerialTestButton4.TabIndex = 15;
+            this.SerialTestButton4.Text = "Serial Test D";
+            this.SerialTestButton4.UseVisualStyleBackColor = true;
+            this.SerialTestButton4.Click += new System.EventHandler(this.SerialTestButton4_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SerialTestButton4);
+            this.Controls.Add(this.SerialTestButton3);
+            this.Controls.Add(this.SerialTestButton2);
+            this.Controls.Add(this.SerialTestButton1);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.AudioPlayer);
             this.Controls.Add(this.LightServoLabel);
@@ -183,6 +235,10 @@
         private AxWMPLib.AxWindowsMediaPlayer AudioPlayer;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Timer uiUpdateTimer;
+        private System.Windows.Forms.Button SerialTestButton1;
+        private System.Windows.Forms.Button SerialTestButton2;
+        private System.Windows.Forms.Button SerialTestButton3;
+        private System.Windows.Forms.Button SerialTestButton4;
     }
 }
 
