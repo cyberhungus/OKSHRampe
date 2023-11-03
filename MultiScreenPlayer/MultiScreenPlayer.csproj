@@ -161,8 +161,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AnimationA.mp4" />
-    <Content Include="AnimationB.mp4" />
     <None Include="bin\Debug\Audio\Applause.mp3" />
     <None Include="bin\Debug\Video\AnimationB.mp4" />
     <None Include="bin\Debug\Video\AnimationA.mp4" />
