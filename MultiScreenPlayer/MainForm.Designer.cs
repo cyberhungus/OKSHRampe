@@ -38,13 +38,13 @@
             this.TestButtonC = new System.Windows.Forms.Button();
             this.TestAllButton = new System.Windows.Forms.Button();
             this.LightServoLabel = new System.Windows.Forms.Label();
-            this.AudioPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.ResetButton = new System.Windows.Forms.Button();
             this.uiUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.SerialTestButton1 = new System.Windows.Forms.Button();
             this.SerialTestButton2 = new System.Windows.Forms.Button();
             this.SerialTestButton3 = new System.Windows.Forms.Button();
             this.SerialTestButton4 = new System.Windows.Forms.Button();
+            this.AudioPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.AudioPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,18 +121,9 @@
             this.LightServoLabel.AutoSize = true;
             this.LightServoLabel.Location = new System.Drawing.Point(41, 81);
             this.LightServoLabel.Name = "LightServoLabel";
-            this.LightServoLabel.Size = new System.Drawing.Size(92, 32);
+            this.LightServoLabel.Size = new System.Drawing.Size(236, 32);
             this.LightServoLabel.TabIndex = 9;
-            this.LightServoLabel.Text = "label1";
-            // 
-            // AudioPlayer
-            // 
-            this.AudioPlayer.Enabled = true;
-            this.AudioPlayer.Location = new System.Drawing.Point(605, 12);
-            this.AudioPlayer.Name = "AudioPlayer";
-            this.AudioPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("AudioPlayer.OcxState")));
-            this.AudioPlayer.Size = new System.Drawing.Size(183, 50);
-            this.AudioPlayer.TabIndex = 10;
+            this.LightServoLabel.Text = "Light Servo Label";
             // 
             // ResetButton
             // 
@@ -193,6 +184,15 @@
             this.SerialTestButton4.Text = "Serial Test D";
             this.SerialTestButton4.UseVisualStyleBackColor = true;
             this.SerialTestButton4.Click += new System.EventHandler(this.SerialTestButton4_Click);
+            // 
+            // AudioPlayer
+            // 
+            this.AudioPlayer.Enabled = true;
+            this.AudioPlayer.Location = new System.Drawing.Point(605, 12);
+            this.AudioPlayer.Name = "AudioPlayer";
+            this.AudioPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("AudioPlayer.OcxState")));
+            this.AudioPlayer.Size = new System.Drawing.Size(183, 50);
+            this.AudioPlayer.TabIndex = 10;
             // 
             // MainForm
             // 

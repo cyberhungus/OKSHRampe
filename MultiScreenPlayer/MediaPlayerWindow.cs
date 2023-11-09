@@ -38,9 +38,12 @@ namespace MultiScreenPlayer
             Console.WriteLine("Starting Media Player - " + path);
             MediaPlayer.URL = System.IO.Directory.GetCurrentDirectory() + path;
             MediaPlayer.settings.setMode("Loop", true);
+            MediaPlayer.Dock = DockStyle.Fill;
 
             StopMediaThread = new Thread(new ThreadStart(stopMediaWorker));
             runtimeSeconds = playTime;
+
+
         }
 
         private void stopMediaWorker()
@@ -51,6 +54,11 @@ namespace MultiScreenPlayer
             Console.WriteLine("Media was stopped by thread");
             StopMediaThread.Join();
             
+        }
+
+        public void setRuntime(int toSet)
+        {
+            runtimeSeconds = toSet;
         }
 
         private void MediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
@@ -118,5 +126,7 @@ namespace MultiScreenPlayer
         {
             MediaPlayer.Visible = playerVisible;
         }
+
+
     }
 }

@@ -8,10 +8,7 @@ namespace RobotUICSharp
     internal class SerialConnector
     {
         private SerialPort port;
-        private Thread receiveThread;
-
-
-
+ 
         public delegate void MessageReceivedEventHandler(object sender, MessageReceivedEventArgs e);
 
         public event MessageReceivedEventHandler MessageReceivedEvent;
@@ -19,7 +16,7 @@ namespace RobotUICSharp
         {
             port = new SerialPort();
             port.BaudRate = 2000000;
-           // receiveThread = new Thread(new ThreadStart(receiveMessages));
+       
            port.DtrEnable = true;
             port.RtsEnable = true;
         }
@@ -41,7 +38,7 @@ namespace RobotUICSharp
         {
             if (port.IsOpen == true)
             {
-                receiveThread.Join();
+                
                 port.Close();
             }
 
@@ -80,29 +77,7 @@ namespace RobotUICSharp
 
         }
 
-        private void receiveMessages()
-        {
-
-            while (true)
-            {
-                try
-                {
-                    String received = port.ReadLine();
-                    port.ReadTimeout = 10;
-
-                    Console.WriteLine("Receiver thread running");
-                    
-                    //Thread.Sleep(100);
-                }
-                catch (TimeoutException tex)
-                {
-                    Console.WriteLine(tex.Message);
-                }
-
-              
-            }
-
-        }
+    
 
         //Returns the state of the port as a boolean. 
         public bool isOpen()

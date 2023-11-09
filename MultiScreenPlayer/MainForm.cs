@@ -1,4 +1,6 @@
-﻿using RobotUICSharp;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using RobotUICSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +41,8 @@ namespace MultiScreenPlayer
 
         bool audioPlaying = false;
 
+        String fileName = "/settings.txt";
+
         public MainForm()
         {
             InitializeComponent();
@@ -68,8 +72,58 @@ namespace MultiScreenPlayer
             AudioPlayer.settings.setMode("Loop", true);
             AudioPlayer.Ctlcontrols.stop();
 
+
+            if(!File.Exists(System.IO.Directory.GetCurrentDirectory() + fileName))
+            {
+                writeDataToFile();
+            }
+
+            loadFromFile(System.IO.Directory.GetCurrentDirectory() + fileName);
+
+
+            
+
         }
 
+        public void loadFromFile(String filePath)
+        {
+            TextReader reader = null;
+            try
+            {
+                reader = new StreamReader(filePath);
+                var fileContents = reader.ReadToEnd();
+                SettingsContainer sc = JsonConvert.DeserializeObject<SettingsContainer>(fileContents);
+                MediaPlayerA.setRuntime(sc.runtimeA);
+                MediaPlayerA.setRuntime(sc.runtimeB);
+                MediaPlayerA.setRuntime(sc.runtimeMotor);
+                Console.WriteLine("A-" + sc.runtimeA);
+                Console.WriteLine("B-" + sc.runtimeB);
+                Console.WriteLine("Motor-" + sc.runtimeMotor);
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+            }
+        }
+
+
+        public void writeDataToFile()
+        {
+
+            SettingsContainer sc = new SettingsContainer(10, 10, 10);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(System.IO.Directory.GetCurrentDirectory() + fileName))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, sc);
+            }
+
+
+        }
 
         private void autoConnectSerial()
         {

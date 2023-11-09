@@ -1,4 +1,3 @@
-#include <Servo.h>
 
 //needed for serial communication system
 const byte numChars = 64;
@@ -9,14 +8,14 @@ int dataNumber = 0;
 
 //definitions for servo - connect servo control wire to 9 (or change this field)
 
-int relayPinA = 9;
-int relayPinB = 10;
+int relayPinA = 25;
+int relayPinB = 26;
 
 //Connect Sensors to these pins, or change fields
-int SensorAPin = 4;
-int SensorBPin = 5;
-int SensorCPin = 6;
-int SensorDPin = 7;
+int SensorAPin = 14;
+int SensorBPin = 27;
+int SensorCPin = 16;
+int SensorDPin = 17;
 
 
 //holds message to send
@@ -53,9 +52,9 @@ void readSensors() {
   //erster Sensor
   state = digitalRead(SensorAPin);
   // Serial.println("Sensor A: " + state);
-  if (state == 1) {
+  if (state == 0) {
     toSend[0] = '1';
-   // Serial.println("<1000>");
+    Serial.println("<1000>");
   }
   else {
     toSend[0] = '0';
@@ -63,9 +62,9 @@ void readSensors() {
   //zweiter sensor
   state = digitalRead(SensorBPin);
   //  Serial.println("Sensor B: " + state);
-  if (state == 1) {
+  if (state == 0) {
     toSend[1] = '1';
-    //Serial.println("<0100>");
+    Serial.println("<0100>");
   }
   else {
     toSend[1] = '0';
@@ -73,9 +72,9 @@ void readSensors() {
   //dritter sensor
   state = digitalRead(SensorCPin);
   //Serial.println("Sensor C: " + state);
-  if (state == 1) {
+  if (state == 0) {
     toSend[2] = '1';
-   // Serial.println("<0010>");
+    Serial.println("<0010>");
   }
   else {
     toSend[2] = '0';
@@ -83,9 +82,9 @@ void readSensors() {
   //vierter sensor
   state = digitalRead(SensorDPin);
   // Serial.println("Sensor D: " + state);
-  if (state == 1) {
+  if (state == 0) {
     toSend[3] = '1';
-   // Serial.println("<0001>");
+    Serial.println("<0001>");
   }
   else {
     toSend[3] = '0';
@@ -174,7 +173,7 @@ void showNewData() {
 
 
 void updateRelay(boolean A) {
-  if (A == true) {
+  if (A == false) {
     digitalWrite(relayPinA, HIGH);
     digitalWrite(relayPinB, HIGH);
   }
